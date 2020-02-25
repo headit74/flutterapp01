@@ -1,10 +1,10 @@
 import '../models/location.dart';
 import '../models/location_fact.dart';
 
-class MockLocation {
+class MockLocation extends Location {
   static Location FetchAny() {
     return Location(
-        name: 'Xing Jin',
+        name: 'Location Detail by Flutter',
         url: 'https://fluttercrashcourse.com',
         facts: <LocationFact>[
           LocationFact(
