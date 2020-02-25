@@ -1,6 +1,6 @@
-# lesson01
+# Mobile App created by Flutter
 
-Lesson 01. Hello, Flutter
+Flutter is great.
 
 ## Getting Started
 
