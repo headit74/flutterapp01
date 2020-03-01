@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import 'models/location.dart';
+import 'styles.dart';
 
 class LocationDetail extends StatelessWidget {
   final Location location;
@@ -10,7 +12,11 @@ class LocationDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(location.name)),
+        appBar: AppBar(
+            title: Text(
+          location.name,
+          style: Styles.navbarTitle,
+        )),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.start, // top -> down
             crossAxisAlignment: CrossAxisAlignment.stretch, // left -> right
@@ -48,28 +54,37 @@ class LocationDetail extends StatelessWidget {
   Widget _sectionTitle(String title) {
     return Container(
       padding: EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 15.0),
-      child: Text(title,
-        textAlign: TextAlign.left,
-        style: TextStyle(
-          fontSize: 25.0,
-          color: Colors.black,
-        ),
-      ),
+      child: Text(title, textAlign: TextAlign.left, style: Styles.headerLarge),
     );
-
   }
 
   Widget _sectionText(String text) {
     return Container(
       padding: EdgeInsets.fromLTRB(25.0, 15.0, 25.0, 15.0),
-      child: Text(text),
+      child: Text(
+        text,
+        style: Styles.textDefault,
+      ),
     );
   }
 
   Widget _bannerImage(String url, double height) {
+    //print(url);
     return Container(
       constraints: BoxConstraints.tightFor(height: height),
       child: Image.network(url, fit: BoxFit.fitWidth),
+      /*Stack(
+        children: <Widget>[
+          Center(child: CircularProgressIndicator()),
+          Center(
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: url,
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ],
+      ),*/
     );
   }
 }
