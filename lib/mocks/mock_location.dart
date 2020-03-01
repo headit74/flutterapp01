@@ -5,7 +5,7 @@ class MockLocation extends Location {
   static Location FetchAny() {
     return Location(
         name: 'Location Detail by Flutter',
-        url: 'https://fluttercrashcourse.com',
+        url: 'https://community.rspb.org.uk/community/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-88-34/Green_2D00_Fields_2D00_green_2D00_20340138_2D00_1280_2D00_1024.jpg',
         facts: <LocationFact>[
           LocationFact(
               title: 'Summary',

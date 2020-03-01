@@ -14,7 +14,7 @@ class LocationDetail extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.start, // top -> down
             crossAxisAlignment: CrossAxisAlignment.stretch, // left -> right
-            children: _renderFacts(location)));
+            children: _renderBody(context, location)));
   }
 
   // _ -> private method
@@ -27,7 +27,14 @@ class LocationDetail extends StatelessWidget {
     );
   }
 
-  List<Widget> _renderFacts(Location location) {
+  List<Widget> _renderBody(BuildContext context, Location location) {
+    var result = List<Widget>();
+    result.add(_bannerImage(location.url, 170.0));
+    result.addAll(_renderFacts(context, location));
+    return result;
+  }
+
+  List<Widget> _renderFacts(BuildContext context, Location location) {
     var result = List<Widget>();
 
     // debugPrint('location: $location');
@@ -39,10 +46,30 @@ class LocationDetail extends StatelessWidget {
   }
 
   Widget _sectionTitle(String title) {
-    return Text(title);
+    return Container(
+      padding: EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 15.0),
+      child: Text(title,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          fontSize: 25.0,
+          color: Colors.black,
+        ),
+      ),
+    );
+
   }
 
   Widget _sectionText(String text) {
-    return Text(text);
+    return Container(
+      padding: EdgeInsets.fromLTRB(25.0, 15.0, 25.0, 15.0),
+      child: Text(text),
+    );
+  }
+
+  Widget _bannerImage(String url, double height) {
+    return Container(
+      constraints: BoxConstraints.tightFor(height: height),
+      child: Image.network(url, fit: BoxFit.fitWidth),
+    );
   }
 }
